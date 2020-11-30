@@ -135,7 +135,7 @@ namespace RPG
             child._parent = this;
         }
 
-        public bool RemoveChild(Actor child)
+        public bool RemoveChild(Actor child)  // <=== it doesn't have reference?
         {
             bool childRemoved = false;
 
