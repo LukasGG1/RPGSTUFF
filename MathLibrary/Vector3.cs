@@ -9,7 +9,7 @@ namespace MathLibrary
         private float _x;
         private float _y;
         private float _z;
-
+        //ss
         public float X
         {
             get
