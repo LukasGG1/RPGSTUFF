@@ -184,6 +184,9 @@ namespace RPG
             //Creates a new window for raylib
             Raylib.InitWindow(1024, 760, "Math For Games");
 
+            
+            //Rectangle boxCollision = { 0 };
+
 
             //==========Camera==========\\
             //Camera2D camera = { 0 };
@@ -201,139 +204,186 @@ namespace RPG
             Scene scene2 = new Scene();
 
             //Create the actors to add to our scene
+
+            //CollisionDetection smile = new CollisionDetection(15, 5, '@');
             Actor actor = new Actor(0,0,Color.GREEN,'■',ConsoleColor.Green);
             Enemy enemy = new Enemy(10, 10, Color.GREEN, '■', ConsoleColor.Green);
             Player player = new Player(0, 1,Color.BLUE, '@', ConsoleColor.Red);
             //=================================================
             //=======MAP=======================================
             //=================================================
-            Map1 map12 = new Map1(16, 11, Color.BLUE, '#');
+            //Map1 map12 = new Map1(16, 11, Color.BLUE, '#');
 
-            MapGrid map13 = new MapGrid(15, 12, Color.BLUE, '#');
+            //MapGrid map13 = new MapGrid(15, 12, Color.BLUE, '#');
             Map2 mapVillage = new Map2(16, 11, ' ');
             
-            //Castle
-            Castle castle = new Castle(15, 5, ' ');
+            ////Castle
+            Castle castle = new Castle(15, 6, ' ');
+            //Castle Room
+            MapCastle mapCastle = new MapCastle(16, 11, ' ');
 
 
-            //GeneralStore
-            GeneralStore store = new GeneralStore(14, 6, ' ');
+            ////GeneralStore
+            GeneralStore store = new GeneralStore(14, 7, ' ');
 
-            //Building1
-            Building1 house = new Building1(14, 7);
-            Building1 house1 = new Building1(14, 11);
-            Building1 house2 = new Building1(16, 6);
+            ////Building1
+            Building1 house = new Building1(14, 8);
+            Building1 house1 = new Building1(14, 11.5f);
+            Building1 house2 = new Building1(16, 7);
 
-            //Building2
-            Building2 smolhouse = new Building2(14, 9, ' ');
-            Building2 smolhouse1 = new Building2(18, 10, ' '); 
+            ////Building2
+            Building2 smolhouse = new Building2(14, 9.5f, ' ');
+            Building2 smolhouse1 = new Building2(18, 11, ' '); 
 
-            //Church
+            ////Church
             Church church = new Church(10, 10, ' ');
-
-
-            //Tower
-            Tower tower = new Tower(16, 8, ' ');
-
-            //BlackSmith
-            BlackSmith blacksmith = new BlackSmith(16, 9);
-
-
-
             
-            enemy.Target = player;
-            //enemy.SetTranslation(new Vector2(5, 0));
-            //map12.SetScale(30, 30);
-            mapVillage.SetScale(30, 30); //Break Point
-            //map13.SetScale(31.4f, 27);
 
-            //=====Castle
+
+            ////BlackSmith
+            BlackSmith blacksmith = new BlackSmith(16, 9.5f);
+
+            ////Tower
+            Tower tower = new Tower(16, 8.5f, ' ');
+
+            ////Collision\\\\
+            //Castle
+            CastleEnterance smile = new CastleEnterance(15, 5, '@');
+            //Church
+            CollisionDetection smile2 = new CollisionDetection(11, 10, '@');
+            //Building1
+            CollisionDetection smile3 = new CollisionDetection(14, 7, '@'); //<== House1
+            CollisionDetection smile4 = new CollisionDetection(14, 11, '@'); //<== House2
+            CollisionDetection smile5 = new CollisionDetection(16, 6, '@'); //<== House3
+            //Building2
+            CollisionDetection smile6 = new CollisionDetection(14, 9, '@'); //<== SmolHouse1
+            CollisionDetection smile7 = new CollisionDetection(18, 10, '@'); //<== SmolHouse2
+            //Tower
+            CollisionDetection smile8 = new CollisionDetection(16, 8, '@');
+            //BlackSmith
+            CollisionDetection smile9 = new CollisionDetection(16, 9, '@');
+            //General Store
+            CollisionDetection smile10 = new CollisionDetection(14, 6, '@');
+
+
+            //enemy.Target = player;
+            ////enemy.SetTranslation(new Vector2(5, 0));
+            mapVillage.SetScale(30, 20); //Break Point
+
+            ////=====Castle
             castle.SetScale(25, 20);
+            //Castle Room
+            mapCastle.SetScale(30, 30);
 
 
-            //======GeneralStore
+            ////======GeneralStore
             store.SetScale(2, 2);
             
-            //=====Building1
+            ////=====Building1
             house.SetScale(2, 2);
             house1.SetScale(2, 2);
             house2.SetScale(2, 2);
             
-            //=====Building2
+            ////=====Building2
             smolhouse.SetScale(2, 2);
             smolhouse1.SetScale(2, 2);
             
-            //=====Church
+            ////=====Church
             church.SetScale(30, 30);
 
             
 
-            //======Tower
+            ////======Tower
             tower.SetScale(25, 25);
 
 
-            //=====BlackSmith
+            ////=====BlackSmith
             blacksmith.SetScale(2, 2);
 
             player.Speed = 5;
             player.SetTranslation(new Vector2(5, 15));
-            player.AddChild(enemy);
-            //player.SetRotation(1);
-            player.SetScale(5, 5);
+            //player.AddChild(enemy);
+            ////player.SetRotation(1);
+            player.SetScale(3, 3);
 
 
 
 
 
-            //map.SetScale(31, 23.49f);
+            ////map.SetScale(31, 23.49f);
 
 
-            //=======================
-            //scene1.AddActor(map12);
-            ////=========Map===========
-            //scene1.AddActor(map13);
+            ////=======================
+            ////scene1.AddActor(map12);
+            //////=========Map===========
+            ////scene1.AddActor(map13);
             scene1.AddActor(mapVillage);
 
+            //==========
+
+
+
+
+            ////===============================
+            ////=========Building==============
+            ///
+            //
+           scene1.AddActor(smile); //<== Castle
             
-
-
-
-            //===============================
-            //=========Building==============
+            scene1.AddActor(smile2); //<== Church
             
-            //Castle
+            scene1.AddActor(smile3); //<== House1
+            scene1.AddActor(smile4); //<== House2
+            scene1.AddActor(smile5); //<== House3
+            
+            scene1.AddActor(smile6); //<== SmolHouse1
+            scene1.AddActor(smile7); //<== SmolHouse2
+            
+            scene1.AddActor(smile8); //<== Tower
+            
+            scene1.AddActor(smile9); //<== BlackSmith
+            
+            scene1.AddActor(smile10); //<== General Store
+            
+            
+            ////Castle
             scene1.AddActor(castle);
 
-            //General Store
+            ////General Store
             scene1.AddActor(store);
-            
-            //Building1
+
+            ////Building1
             scene1.AddActor(house);
             scene1.AddActor(house1);
             scene1.AddActor(house2);
 
-            //Building2
+            ////Building2
             scene1.AddActor(smolhouse);
 
 
-            //Church
+            ////Church
             scene1.AddActor(church);
-           
-            //BlackSmith
+
+            ////BlackSmith
             scene1.AddActor(blacksmith);
 
-            //Tower
+            ////Tower
             scene1.AddActor(tower);
 
-        //================================
+            //================================
+
+
 
 
             scene1.AddActor(player);
             scene1.AddActor(actor);
-            scene1.AddActor(enemy);
 
 
 
+
+
+            //scene2 as Castle
+            scene2.AddActor(mapCastle);
             scene2.AddActor(player);
 
  

@@ -34,7 +34,7 @@ namespace RPG
         protected Actor _parent;
         protected Actor[] _children = new Actor[0];
         protected float _rotationAngle;
-        private float _collisionRadius;
+        protected float _collisionRadius;
         public Actor other;
         private Shape shape;
         private static float collisionRadius;
