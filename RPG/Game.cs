@@ -92,7 +92,7 @@ namespace RPG
 
             return index;
         }
-
+        
         /// <summary>
         /// Finds the instance of the scene given that inside of the array
         /// and removes it
@@ -184,13 +184,12 @@ namespace RPG
             //Creates a new window for raylib
             Raylib.InitWindow(1024, 760, "Math For Games");
 
-            
+
             //Rectangle boxCollision = { 0 };
 
 
             //==========Camera==========\\
             //Camera2D camera = { 0 };
-
 
             //===========================\\
             Raylib.SetTargetFPS(60);
@@ -198,17 +197,27 @@ namespace RPG
             //Set up console window
             Console.CursorVisible = false;
             Console.Title = "Math For Games";
-
             //Create a new scene for our actors to exist in
             Scene scene1 = new Scene();
             Scene scene2 = new Scene();
+            Scene scene3 = new Scene();
+            Scene scene4 = new Scene();
+            Scene scene5 = new Scene();
+            Scene scene6 = new Scene();
+            Scene scene7 = new Scene();
+            Scene scene8 = new Scene();
+            Scene scene9 = new Scene();
+            Scene scene10 = new Scene();
 
             //Create the actors to add to our scene
 
             //CollisionDetection smile = new CollisionDetection(15, 5, '@');
+
             Actor actor = new Actor(0,0,Color.GREEN,'■',ConsoleColor.Green);
             Enemy enemy = new Enemy(10, 10, Color.GREEN, '■', ConsoleColor.Green);
             Player player = new Player(0, 1,Color.BLUE, '@', ConsoleColor.Red);
+
+
             //=================================================
             //=======MAP=======================================
             //=================================================
@@ -223,6 +232,7 @@ namespace RPG
             MapCastle mapCastle = new MapCastle(16, 11, ' ');
 
 
+
             ////GeneralStore
             GeneralStore store = new GeneralStore(14, 7, ' ');
 
@@ -230,6 +240,8 @@ namespace RPG
             Building1 house = new Building1(14, 8);
             Building1 house1 = new Building1(14, 11.5f);
             Building1 house2 = new Building1(16, 7);
+            //HouseRoom
+            HouseRoom Houseroom = new HouseRoom(16, 11, ' ');
 
             ////Building2
             Building2 smolhouse = new Building2(14, 9.5f, ' ');
@@ -249,21 +261,28 @@ namespace RPG
             ////Collision\\\\
             //Castle
             CastleEnterance smile = new CastleEnterance(15, 5, '@');
+            Game.SetCurrentScene(1);
+            
             //Church
             CollisionDetection smile2 = new CollisionDetection(11, 10, '@');
+
             //Building1
-            CollisionDetection smile3 = new CollisionDetection(14, 7, '@'); //<== House1
-            CollisionDetection smile4 = new CollisionDetection(14, 11, '@'); //<== House2
-            CollisionDetection smile5 = new CollisionDetection(16, 6, '@'); //<== House3
-            //Building2
-            CollisionDetection smile6 = new CollisionDetection(14, 9, '@'); //<== SmolHouse1
-            CollisionDetection smile7 = new CollisionDetection(18, 10, '@'); //<== SmolHouse2
-            //Tower
-            CollisionDetection smile8 = new CollisionDetection(16, 8, '@');
-            //BlackSmith
-            CollisionDetection smile9 = new CollisionDetection(16, 9, '@');
-            //General Store
-            CollisionDetection smile10 = new CollisionDetection(14, 6, '@');
+            //CollisionDetection smile3 = new CollisionDetection(14, 7, '@'); //<== House1
+            //CollisionDetection smile4 = new CollisionDetection(14, 11, '@'); //<== House2
+            //CollisionDetection smile5 = new CollisionDetection(16, 6, '@'); //<== House3
+
+            ////Building2
+            //CollisionDetection smile6 = new CollisionDetection(14, 9, '@'); //<== SmolHouse1
+            //CollisionDetection smile7 = new CollisionDetection(18, 10, '@'); //<== SmolHouse2
+
+            ////Tower
+            //CollisionDetection smile8 = new CollisionDetection(16, 8, '@');
+
+            ////BlackSmith
+            //CollisionDetection smile9 = new CollisionDetection(16, 9, '@');
+
+            ////General Store
+            //CollisionDetection smile10 = new CollisionDetection(14, 6, '@');
 
 
             //enemy.Target = player;
@@ -283,6 +302,8 @@ namespace RPG
             house.SetScale(2, 2);
             house1.SetScale(2, 2);
             house2.SetScale(2, 2);
+            //House Room
+            Houseroom.SetScale(15, 15);
             
             ////=====Building2
             smolhouse.SetScale(2, 2);
@@ -322,28 +343,27 @@ namespace RPG
             //==========
 
 
-
-
+            
             ////===============================
             ////=========Building==============
             ///
             //
            scene1.AddActor(smile); //<== Castle
             
-            scene1.AddActor(smile2); //<== Church
+            //scene1.AddActor(smile2); //<== Church
             
-            scene1.AddActor(smile3); //<== House1
-            scene1.AddActor(smile4); //<== House2
-            scene1.AddActor(smile5); //<== House3
+            //scene1.AddActor(smile3); //<== House1
+            //scene1.AddActor(smile4); //<== House2
+            //scene1.AddActor(smile5); //<== House3
             
-            scene1.AddActor(smile6); //<== SmolHouse1
-            scene1.AddActor(smile7); //<== SmolHouse2
+            //scene1.AddActor(smile6); //<== SmolHouse1
+            //scene1.AddActor(smile7); //<== SmolHouse2
             
-            scene1.AddActor(smile8); //<== Tower
+            //scene1.AddActor(smile8); //<== Tower
             
-            scene1.AddActor(smile9); //<== BlackSmith
+            //scene1.AddActor(smile9); //<== BlackSmith
             
-            scene1.AddActor(smile10); //<== General Store
+            //scene1.AddActor(smile10); //<== General Store
             
             
             ////Castle
@@ -382,20 +402,28 @@ namespace RPG
 
 
 
+
+            //=====>Scene2<=====\\
+
             //scene2 as Castle
             scene2.AddActor(mapCastle);
             scene2.AddActor(player);
 
+            //Scene3 as House
+            scene3.AddActor(Houseroom);
+            scene3.AddActor(player);
  
             
             //Sets the starting scene index and adds the scenes to the scenes array
             int startingSceneIndex = 0;
             startingSceneIndex = AddScene(scene1);
             AddScene(scene2);
-
+            AddScene(scene3);
+            AddScene(scene4);
             //Sets the current scene to be the starting scene index
             SetCurrentScene(startingSceneIndex);
         }
+
 
 
 
@@ -415,8 +443,12 @@ namespace RPG
         public void Draw()
         {
             Raylib.BeginDrawing();
+            
 
             Raylib.ClearBackground(Color.BLACK);
+            
+           
+
             Console.Clear();
             _scenes[_currentSceneIndex].Draw();
 

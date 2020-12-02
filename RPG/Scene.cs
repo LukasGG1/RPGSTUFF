@@ -77,6 +77,7 @@ namespace RPG
 
         public bool RemoveActor(Actor actor)
         {
+
             //Check to see if the actor was null
             if (actor == null)
             {
@@ -91,6 +92,7 @@ namespace RPG
             //Copy values from the old array to the new array
             for (int i = 0; i < _actors.Length; i++)
             {
+
                 if (actor != _actors[i])
                 {
                     newArray[j] = _actors[i];

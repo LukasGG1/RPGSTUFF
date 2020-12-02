@@ -48,6 +48,7 @@ namespace RPG
             ///      GameManager.onWin();
             ///
             if (other is Player)
+
                 GameManager.onWin?.Invoke();
 
             base.OnCollision(other);
@@ -62,8 +63,8 @@ namespace RPG
             /// onWin delegate.
             ///
 
-
-            GameManager.onWin += DrawWinText;
+            
+            GameManager.onWin += DrawText;
             base.Start();
         }
 
@@ -72,9 +73,9 @@ namespace RPG
             base.Update(deltaTime);
         }
 
-        private void DrawWinText()
+        private void DrawText()
         {
-            Raylib.DrawText("You walks into enterance.\nPress Esc to quit", 2, 2,2 , Color.BLUE);
+            Raylib.DrawText("You walks into enterance.\nPress E to Enter?", 2, 2,2 , Color.BLUE);
         }
     }
 }

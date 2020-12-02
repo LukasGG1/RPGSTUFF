@@ -65,6 +65,9 @@
     <None Update="Assest\House.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Assest\HouseMap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Assest\Map Village.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
