@@ -92,7 +92,7 @@ namespace RPG
         /// <param name="y">Position on the y axis</param>
         /// <param name="icon">The symbol that will appear when drawn</param>
         /// <param name="color">The color of the symbol that will appear when drawn</param>
-        public Actor(float x, float y, float collisionRadius, char icon = ' ', ConsoleColor color = ConsoleColor.White)
+        public Actor(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
         {
             _rayColor = Color.WHITE;
             _icon = icon;
@@ -100,7 +100,6 @@ namespace RPG
             LocalPosition = new Vector2(x, y);
             _velocity = new Vector2();
             _color = color;
-            _collisionRadius = collisionRadius;
         }
 
 
@@ -110,16 +109,13 @@ namespace RPG
         /// <param name="icon">The symbol that will appear when drawn</param>
         /// <param name="color">The color of the symbol that will appear when drawn to the console</param>
         public Actor(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
-            : this(x,y, collisionRadius, icon,color)
+            : this(x, y, icon, color)
         {
             _localTransform = new Matrix3();
             _rayColor = rayColor;
         }
 
-        public Actor(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
-        {
-            other = other;
-        }
+
 
         public void AddChild(Actor child)
         {
